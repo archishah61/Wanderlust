@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Background circle in Airbnb coral/red -->
+  <circle cx="16" cy="16" r="16" fill="#FF5A5F"/>
+  
+  <!-- Stylized 'A' shape inspired by the Airbnb logo -->
+  <path d="M16,7 C14.3,7 13,8.3 13,10 C13,11.3 14.1,13.1 16,15.2 C17.9,13.1 19,11.3 19,10 C19,8.3 17.7,7 16,7 Z M16,18 C13.4,15.2 11,12.3 11,10 C11,7.2 13.2,5 16,5 C18.8,5 21,7.2 21,10 C21,12.3 18.6,15.2 16,18 Z" fill="white"/>
+  
+  <!-- Stylized heart shape at the bottom -->
+  <path d="M16,22 C14.8,22 13.7,21.5 13,20.7 C12.3,21.5 11.2,22 10,22 C7.8,22 6,20.2 6,18 C6,15.3 8.6,13.1 13,10 L16,13 L19,10 C23.4,13.1 26,15.3 26,18 C26,20.2 24.2,22 22,22 C20.8,22 19.7,21.5 19,20.7 C18.3,21.5 17.2,22 16,22 Z" fill="#FFFFFF" fill-opacity="0.4"/>
+</svg>
