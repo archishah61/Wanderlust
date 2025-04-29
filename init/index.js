@@ -3,7 +3,7 @@ const initData = require("./data.js");
 const Listing = require("../models/listing.js");
 
 async function main() {
-    await mongoose.connect("mongodb://localhost:27017/wanderlust")
+    await mongoose.connect("mongodb+srv://archishah0709:archishah0709@cluster0.s8ost.mongodb.net/wanderlust")
 }
 
 main()
