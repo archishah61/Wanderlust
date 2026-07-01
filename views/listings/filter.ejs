@@ -1,24 +1,68 @@
 <% layout('/layouts/boilerplate.ejs') %>
 
+    <style>
+      /* Listing Card Styling */
+      .listing-card {
+        border: none !important;
+        margin-bottom: 2rem;
+      }
+      .listing-card .card-img-top {
+        border-radius: 16px !important;
+        object-fit: cover;
+        height: 20rem;
+      }
+      .listing-card .card-body {
+        padding: 0.8rem 0 0 0 !important;
+      }
+      .listing-link {
+        text-decoration: none;
+        color: #222222;
+      }
+      .listing-link:hover {
+        color: #222222;
+      }
+      .card-title-airbnb {
+        font-weight: 600;
+        font-size: 1rem;
+        margin-bottom: 0.2rem;
+        color: #222222;
+      }
+      .card-price-airbnb {
+        margin-top: 0.4rem;
+        font-size: 1rem;
+        color: #222222;
+      }
+      .tax-info {
+        display: none;
+        color: #717171;
+        font-size: 0.9rem;
+        text-decoration: underline;
+      }
+    </style>
+
     <body>
-        <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+        <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1 mt-3">
             <% for (let listing of listings){%>
                 <% if(listing.category===listingCategory){ %>
-                    <a class="listing-link" href="/listings/<%= listing._id %>">
-                        <div class="card listing-card  col">
-                            <img src="<%= listing.image.url %>" style="height: 20rem;" class="card-img-top"
-                                alt="listing_img">
-                            <div class="card-body">
-                                <p class="card-text">
-                                    <b>
+                    <div class="col">
+                        <div class="card listing-card">
+                            <a class="listing-link" href="/listings/<%= listing._id %>">
+                                <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_img">
+                                <div class="card-body">
+                                    <div class="card-title-airbnb">
+                                        <%= listing.location %>, <%= listing.country %>
+                                    </div>
+                                    <div class="text-muted" style="font-size: 0.95rem;">
                                         <%= listing.title%>
-                                    </b> <br>
-                                    &#8377;<%= listing.price.toLocaleString("en-IN") %>/night
-                                </p>
-                            </div>
+                                    </div>
+                                    <div class="card-price-airbnb">
+                                        <span style="font-weight: 600;">&#8377;<%= listing.price.toLocaleString("en-IN") %></span> / night
+                                    </div>
+                                </div>
+                            </a>
                         </div>
-                    </a>
-                    <% }%>
-                        <% }%>
+                    </div>
+                <% }%>
+            <% }%>
         </div>
     </body>

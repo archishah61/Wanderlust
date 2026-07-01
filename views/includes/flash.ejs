@@ -1,13 +1,81 @@
+<style>
+    .airbnb-alert {
+        position: fixed;
+        top: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 9999;
+        min-width: 340px;
+        max-width: 90vw;
+        background-color: #ffffff;
+        box-shadow: 0 8px 28px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06);
+        border-radius: 12px;
+        border: 1px solid #ebebeb;
+        padding: 1rem 1.25rem !important;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: #222222;
+        animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    
+    .airbnb-alert-success {
+        border-left: 6px solid #00A699;
+    }
+    
+    .airbnb-alert-danger {
+        border-left: 6px solid #E31C5F;
+    }
+    
+    .airbnb-alert-success .alert-icon {
+        color: #00A699;
+        font-size: 1.25rem;
+    }
+    
+    .airbnb-alert-danger .alert-icon {
+        color: #E31C5F;
+        font-size: 1.25rem;
+    }
+    
+    .alert-message {
+        font-weight: 500;
+        font-size: 0.95rem;
+        letter-spacing: 0.2px;
+        margin-right: 1.5rem;
+    }
+    
+    @keyframes slideDown {
+        from { top: 60px; opacity: 0; transform: translateX(-50%) scale(0.95); }
+        to { top: 100px; opacity: 1; transform: translateX(-50%) scale(1); }
+    }
+    
+    .airbnb-alert .btn-close {
+        position: static !important;
+        padding: 0 !important;
+        margin-left: auto !important;
+        opacity: 0.4;
+        transition: opacity 0.2s;
+        width: 1rem;
+        height: 1rem;
+    }
+    
+    .airbnb-alert .btn-close:hover {
+        opacity: 1;
+    }
+</style>
+
 <% if(success && success.length){ %>
-    <div class="alert alert-success alert-dismissible fade show col-6 offset-3" role="alert">
-        <%= success %>
+    <div class="alert airbnb-alert airbnb-alert-success fade show" role="alert">
+        <i class="fa-solid fa-circle-check alert-icon"></i>
+        <div class="alert-message"><%= success %></div>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 <% } %>
 
 <% if(error && error.length){ %>
-    <div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
-        <%= error %>
+    <div class="alert airbnb-alert airbnb-alert-danger fade show" role="alert">
+        <i class="fa-solid fa-circle-exclamation alert-icon"></i>
+        <div class="alert-message"><%= error %></div>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 <% } %>

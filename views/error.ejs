@@ -1,9 +1,60 @@
 <% layout("layouts/boilerplate") -%>
 
-    <div class="row mt-3">
-        <div class="alert alert-danger col-6 offset-3" role="alert">
-            <p class="alert-heading">
-                <%= err.message %>
-            </p>
-        </div>
+<style>
+    .error-container {
+        max-width: 600px;
+        margin: 5rem auto;
+        padding: 3.5rem 2.5rem;
+        background: #ffffff;
+        border: 1px solid #ebebeb;
+        border-radius: 16px;
+        box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+        text-align: center;
+    }
+    .error-icon {
+        font-size: 4rem;
+        color: #FF385C; /* Airbnb vibrant red */
+        margin-bottom: 1.5rem;
+    }
+    .error-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #222222;
+        margin-bottom: 1rem;
+    }
+    .error-message {
+        font-size: 1.1rem;
+        color: #717171;
+        margin-bottom: 2.5rem;
+        line-height: 1.6;
+    }
+    .btn-home {
+        background-color: #222222;
+        color: #ffffff;
+        font-weight: 600;
+        font-size: 1rem;
+        padding: 0.9rem 2.5rem;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background-color 0.2s, transform 0.1s;
+        display: inline-block;
+    }
+    .btn-home:hover {
+        background-color: #000000;
+        color: #ffffff;
+    }
+    .btn-home:active {
+        transform: scale(0.96);
+    }
+</style>
+
+<div class="container">
+    <div class="error-container">
+        <i class="fa-solid fa-triangle-exclamation error-icon"></i>
+        <h1 class="error-title">Oops! Something went wrong.</h1>
+        <p class="error-message">
+            <%= err.message || "We encountered an unexpected error while processing your request." %>
+        </p>
+        <a href="/listings" class="btn-home">Back to Home</a>
     </div>
+</div>

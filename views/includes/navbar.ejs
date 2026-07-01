@@ -1,63 +1,188 @@
 <style>
-    .btn-search {
-        background-color: #fe424d;
-        color: #fff;
-        border-radius: 25px;
-        padding: 0 1rem 0 1rem;
+    /* Custom brand logo style */
+    .navbar-brand i {
+        color: #FF385C;
+        font-size: 2rem;
+    }
+    
+    .navbar-brand {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 700;
+        color: #FF385C !important;
+        font-size: 1.25rem;
     }
 
-    .btn-search:hover {
-        background-color: #fe424d;
-        color: #fff;
+    /* Central Search Bar styling resembling Airbnb */
+    .search-bar-container {
+        display: flex;
+        align-items: center;
+        background: #ffffff;
+        border: 1px solid #dddddd;
+        border-radius: 40px;      
+        padding: 5px 5px 5px 20px;
+        margin: 0 auto;
     }
 
-    .btn-search i {
-        display: inline;
-        margin-right: 0.5rem;
+    .search-bar-container:hover {
+        box-shadow: 0 2px 4px rgba(0,0,0,0.18);
     }
 
     .search-inp {
-        border-radius: 25px;
-        padding: 0.5rem 3rem 0.5rem 3rem;
-
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+        padding: 0.5rem !important;
+        width: 250px !important;
+        background: transparent !important;
+        font-weight: 500 !important;
+    }
+    
+    .search-inp:focus {
+        border: none !important;
+        box-shadow: none !important;
+        background: transparent !important;
     }
 
-    .navbar-brand {
-        margin-left: 60px;
+    .search-inp::placeholder {
+        color: #717171;
+        font-weight: 400;
     }
 
-    .navbar-nav {
-        margin-left: -10px;
+    .btn-search {
+        background-color: #FF385C;
+        color: #fff;
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        padding: 0;
+        margin-left: 10px;
+    }
+
+    .btn-search:hover {
+        background-color: #D70466;
+        color: #fff;
+    }
+    
+    .btn-search i {
+        font-size: 0.8rem;
+    }
+
+    /* Right side navigation */
+    .user-actions {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .host-link {
+        font-weight: 600;
+        color: #222222;
+        padding: 10px 15px;
+        border-radius: 20px;
+        transition: background-color 0.2s;
+        text-decoration: none;
+    }
+
+    .host-link:hover {
+        background-color: #f7f7f7;
+        color: #222222;
+    }
+    
+    .user-menu {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border: 1px solid #dddddd;
+        border-radius: 30px;
+        padding: 5px 12px;
+        background: #fff;
+        cursor: pointer;
+        transition: box-shadow 0.2s ease;
+        text-decoration: none;
+        color: #222222;
+    }
+
+    .user-menu:hover {
+        box-shadow: 0 2px 4px rgba(0,0,0,0.18);
+    }
+    
+    .user-menu i {
+        color: #717171;
+        font-size: 1.1rem;
+    }
+    
+    .user-menu .fa-user-circle {
+        font-size: 1.8rem;
+    }
+
+    .navbar-toggler {
+        border: none;
+    }
+    
+    .navbar-toggler:focus {
+        box-shadow: none;
+    }
+
+    @media (min-width: 768px) {
+        .search-form-centered {
+            position: absolute;
+            left: 40%;
+            transform: translateX(-50%);
+        }
     }
 </style>
 
-<nav class="navbar navbar-expand-md navbar-light bg-body-light border-bottom sticky-top">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
+<nav class="navbar navbar-expand-md bg-white border-bottom sticky-top py-3 px-2 px-lg-4">
+    <div class="container">
+        <!-- Logo -->
+        <a class="navbar-brand" href="/listings">
+            <i class="fa-regular fa-compass"></i>
+            <span class="d-none d-md-inline">Wanderlust</span>
+        </a>
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-link" href="/listings">Explore</a>
-            </div>
-            <div class="navbar-nav ms-auto">
-                <form class="d-flex" action="/listings/search" role="search">
-                    <input class="form-control me-2 search-inp" name="destination" type="text"
-                        placeholder="Search Location">
-                    <button class="btn btn-search" type="submit"><i
-                            class="fa-solid fa-magnifying-glass"></i>Search</button>
-                </form>
-            </div>
-            <div class="navbar-nav ms-auto">
-                <a class="nav-link" href="/listings/new">Airbnb your home</a>
-                <% if(!currUser) { %>
-                    <a class="nav-link" href="/signup"><b>Sign up</b></a>
-                    <a class="nav-link" href="/login"><b>Log in</b></a>
-                    <% } %>
-                        <% if(currUser) { %>
-                            <a class="nav-link" href="/logout"><b>Log out</b></a>
-                            <% } %>
+        
+        <div class="collapse navbar-collapse position-relative" id="navbarNavAltMarkup">
+            <!-- Center Search Bar -->
+            <form class="d-flex my-2 my-md-0 search-form-centered" action="/listings/search" role="search">
+                <div class="search-bar-container">
+                    <input class="form-control search-inp" name="destination" type="text"
+                        placeholder="Search Location..." autocomplete="off">
+                    <button class="btn btn-search" type="submit">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </form>
+
+            <!-- Right side links -->
+            <div class="user-actions ms-auto mt-2 mt-md-0 d-flex align-items-center">
+                <a class="host-link d-none d-md-inline-block" href="/listings/new">Airbnb your home</a>
+                
+                <div class="dropdown">
+                    <div class="user-menu" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-bars"></i>
+                        <i class="fa-solid fa-circle-user fa-user-circle"></i>
+                    </div>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 mt-2 rounded-4 p-2">
+                        <% if(!currUser) { %>
+                            <li><a class="dropdown-item fw-bold py-2 rounded" href="/signup">Sign up</a></li>
+                            <li><a class="dropdown-item py-2 rounded" href="/login">Log in</a></li>
+                        <% } else { %>
+                            <li><a class="dropdown-item fw-bold py-2 rounded" href="/listings/new">Airbnb your home</a></li>
+                            <li><a class="dropdown-item py-2 rounded" href="/listings">Explore</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item py-2 rounded" href="/logout">Log out</a></li>
+                        <% } %>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

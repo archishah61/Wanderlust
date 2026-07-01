@@ -1,23 +1,105 @@
 <% layout("layouts/boilerplate") -%>
 
-    <div class="row mt-3">
-        <h1 class="col-6 offset-3">SignUp for Wanderlust</h1>
-        <div class="col-6 offset-3 mt-3">
+<style>
+    .auth-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 4rem 1rem;
+    }
+    
+    .auth-card {
+        background: #fff;
+        border: 1px solid #dddddd;
+        border-radius: 12px;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+        width: 100%;
+        max-width: 500px;
+        overflow: hidden;
+    }
+    
+    .auth-header {
+        border-bottom: 1px solid #ebebeb;
+        padding: 1.2rem;
+        text-align: center;
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: #222222;
+    }
+    
+    .auth-body {
+        padding: 1.5rem 2rem 2rem;
+    }
+    
+    .auth-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        color: #222222;
+    }
+
+    .form-control {
+        border: 1px solid #b0b0b0;
+        padding: 0.8rem 1rem;
+        font-size: 1rem;
+        color: #222222;
+        border-radius: 8px;
+    }
+    
+    .form-control:focus {
+        border-color: #222222;
+        box-shadow: 0 0 0 1px #222222;
+        outline: none;
+    }
+
+    .form-label {
+        font-weight: 500;
+        color: #222222;
+        margin-bottom: 0.4rem;
+    }
+
+    .btn-auth {
+        background-color: #FF385C;
+        color: white;
+        font-weight: 600;
+        font-size: 1rem;
+        padding: 0.8rem;
+        border-radius: 8px;
+        border: none;
+        width: 100%;
+        margin-top: 1rem;
+        transition: background-color 0.2s;
+    }
+
+    .btn-auth:hover {
+        background-color: #D70466;
+        color: white;
+    }
+</style>
+
+<div class="auth-container">
+    <div class="auth-card">
+        <div class="auth-header">
+            Sign up
+        </div>
+        <div class="auth-body">
+            <h3 class="auth-title">Welcome to Wanderlust</h3>
             <form action="/signup" method="POST" class="needs-validation" novalidate>
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
-                    <input name="username" id="username" type="text" class="form-control" required />
+                    <input name="username" id="username" type="text" class="form-control" placeholder="Choose a username" required />
                     <div class="valid-feedback">Looks Good</div>
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input name="email" id="email" type="email" class="form-control" required />
+                    <input name="email" id="email" type="email" class="form-control" placeholder="Enter your email" required />
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input name="password" id="password" type="password" class="form-control" required />
+                    <input name="password" id="password" type="password" class="form-control" placeholder="Create a password" required />
                 </div>
-                <button class="btn btn-success mt-3">SignUp</button>
+                <button class="btn btn-auth">Sign up</button>
             </form>
         </div>
     </div>
+</div>
